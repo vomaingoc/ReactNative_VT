@@ -1,0 +1,1 @@
+pod 'TouchID', :path => "#{node_modules_path}/react-native-touch-id"
