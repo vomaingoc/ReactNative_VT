@@ -102,9 +102,6 @@ export default class App extends Component<Props> {
         pagingEnabled={true}
         // Set custom calendarWidth.
         calendarWidth={320}
-        // ...calendarListParams
-
-        // ...calendarParams
 
         // Initially visible month. Default = Date()
 
@@ -156,26 +153,29 @@ export default class App extends Component<Props> {
 
         // onPressArrowRight={addMonth => addMonth()}
         markedDates={{
-          '2018-09-22' : {
+          '2018-08-31' : {
             color: 'green',
             textColor: '#fff',
             text: "Book"
           },
-          '2018-09-16' : {
-            selected: true,
-            marked: true,
-            selectedColor: 'blue'
+          '2018-10-16' : {
+            color: 'pink',
+            textColor: '#fff',
+            text: "complete"
           },
-          '2018-09-17' : {
+          '2018-10-17' : {
+            color: 'pink',
+            text: "abc",
             marked: true,
-            textColor: 'gray',
-            state: "disabled"
           },
-          '2018-09-18' : {
+          '2018-10-18' : {
             marked: true,
+              color: 'orange',
+              text: "cde",
+              textColor: '#000',
             activeOpacity: 0
           },
-          '2018-09-19' : {
+          '2018-10-19' : {
             disabled: true,
             disableTouchEvent: true
           }
@@ -183,24 +183,26 @@ export default class App extends Component<Props> {
         markingType={'period'}
 
         dayComponent={({date, state, marking}) => {
-          return (<TouchableOpacity onPress={()=> Alert.alert('selected day', JSON.stringify(date))} style={{
+          return (<TouchableOpacity onPress={()=> Alert.alert('Ngày bạn chọn', JSON.stringify(date))} style={{
               flex: 1,
-              padding:1, margin: 0
+              padding:1,
+              margin: 0,
+              zIndex: state === 'disabled' ? -1 : 1
             }}>
-            <View style={{  borderWidth: 1, borderColor: '#ccc', height: 50, backgroundColor: marking.color, borderRadius: 6}}>
+            <View style={{  borderWidth: state === 'disabled' ? 0 : 1, borderColor: '#ccc', height: 50, backgroundColor: state === 'disabled' ?'#fff' : marking.color, borderRadius: 3}}>
             <Text style={{
               margin: 0,
               padding: 0,
                marginTop: 4,
-              fontSize: 18,
+              fontSize: 16,
                 textAlign: 'center',
                 color: state === 'disabled'
-                  ? '#eee'
+                  ? '#ccc'
                   : 'black'
               }}>
               {date.day}
             </Text>
-            <Text style={{fontSize: 14, marginTop:0, padding: 0, textAlign: 'center', color: '#fff'}}>{marking.text}</Text>
+            <Text style={{fontSize: 12, marginTop:0, padding: 0, textAlign: 'center', color: '#fff'}}>{marking.text}</Text>
             </View>
           </TouchableOpacity>);
 
