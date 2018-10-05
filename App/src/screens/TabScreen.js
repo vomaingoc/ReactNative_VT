@@ -79,6 +79,7 @@ export default class TabScreen extends Component<Props> {
   navToThongBao() {
     this.setState({TAB_ACTIVE: 4});
     this.saveItem("@TabBarActive",'4');
+    this.props.navigation.navigate("Photo");
   }
 
   navDrawer() {
@@ -122,7 +123,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>...</Text>
+            ]} uppercase={false}>Chart</Text>
         </Button>
 
         <Button style={[
@@ -141,7 +142,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>...</Text>
+            ]} uppercase={false}>Photo</Text>
         </Button>
 
         <Button style={[

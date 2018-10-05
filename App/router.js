@@ -14,6 +14,7 @@ import DrawerScreen   from "./src/screens/DrawerScreen.js";
 import TabScreen   from "./src/screens/TabScreen.js";
 import Calendar   from "./src/screens/Calendar.js";
 import Chart   from "./src/screens/Chart.js";
+import Photo   from "./src/screens/Photo.js";
 import Test   from "./src/screens/Test.js";
 
 const MenuRightStack = StackNavigator(
@@ -60,6 +61,12 @@ export const RootTab = TabNavigator(
       screen: Chart,
       navigationOptions: {
         title: "Chart",
+      }
+    },
+    Photo: {
+      screen: Photo,
+      navigationOptions: {
+        title: "Photo",
       }
     },
   },
