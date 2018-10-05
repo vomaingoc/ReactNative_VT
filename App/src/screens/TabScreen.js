@@ -66,15 +66,14 @@ export default class TabScreen extends Component<Props> {
   navToDonHang() {
     this.saveItem("@TabBarActive",'1');
     this.setState({TAB_ACTIVE: 1});
+    this.props.navigation.navigate("Calendar");
   }
-  navToChuyenHang() {
-    this.saveItem("@TabBarActive",'2');
-    this.setState({TAB_ACTIVE: 2});
-  }
+
 
   navToTinTuc() {
     this.setState({TAB_ACTIVE: 3});
     this.saveItem("@TabBarActive",'3');
+    this.props.navigation.navigate("Chart");
   }
 
   navToThongBao() {
@@ -104,7 +103,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>Đơn hàng</Text>
+            ]} uppercase={false}>Calendar</Text>
 
         </Button>
         <Button style={[
@@ -123,7 +122,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>Tin tức</Text>
+            ]} uppercase={false}>...</Text>
         </Button>
 
         <Button style={[
@@ -142,7 +141,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>Thông báo</Text>
+            ]} uppercase={false}>...</Text>
         </Button>
 
         <Button style={[
@@ -161,7 +160,7 @@ export default class TabScreen extends Component<Props> {
                   ? tabBarActiveTextColor
                   : tabBarTextColor
               }
-            ]} uppercase={false}>Thêm</Text>
+            ]} uppercase={false}>...</Text>
         </Button>
 
       </FooterTab>

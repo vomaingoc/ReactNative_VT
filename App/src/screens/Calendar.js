@@ -10,6 +10,8 @@ import {
   Button,
   Modal
 } from 'react-native';
+import {Icon } from 'native-base';
+
 import {Calendar, CalendarList, Agenda, LocaleConfig} from 'react-native-calendars';
 LocaleConfig.locales['vn'] = {
   monthNames: [
@@ -61,18 +63,23 @@ LocaleConfig.locales['vn'] = {
 };
 import styles from "../styles/styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+
 LocaleConfig.defaultLocale = 'vn';
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      day: null,
+      text: null
     }
   }
 
-  openModal(){
+  openModal(day, text){
     this.setState({
-      modalVisible: true
+      modalVisible: true,
+      day: JSON.stringify(day),
+      text: text
     })
   }
 
@@ -101,13 +108,14 @@ export default class App extends Component<Props> {
         // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
         maxDate={'2019-05-30'}
         // Handler which gets executed on day press. Default = undefined
-        onDayPress={(day) => {
-          Alert.alert('selected day', JSON.stringify(day))
-        }}
+        // onDayPress={(day) => {
+        //   // Alert.alert('selected day', JSON.stringify(day))
+        //   this.openModal(day)
+        // }}
         // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={(day) => {
-          console.log('selected day', day)
-        }}
+        // onDayLongPress={(day) => {
+        //   console.log('selected day', day)
+        // }}
         // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
         monthFormat={'MM/yyyy'}
         // Handler which gets executed when visible month changes in calendar. Default = undefined
@@ -148,7 +156,7 @@ export default class App extends Component<Props> {
           '2018-10-16' : {
             color: 'pink',
             textColor: '#fff',
-            text: "complete"
+            text: "Complete"
           },
           '2018-10-17' : {
             color: 'pink',
@@ -158,7 +166,7 @@ export default class App extends Component<Props> {
           '2018-10-18' : {
             marked: true,
               color: 'orange',
-              text: "cde",
+              text: "test",
               textColor: '#000',
             activeOpacity: 0
           },
@@ -170,8 +178,7 @@ export default class App extends Component<Props> {
         markingType={'period'}
 
         dayComponent={({date, state, marking}) => {
-          return (<TouchableOpacity onPress={()=>
-            Alert.alert('Ngày bạn chọn', JSON.stringify(date))}
+          return (<TouchableOpacity onPress={()=> this.openModal(date, marking.text)}
             style={{
               width: '100%',
               padding:1,
@@ -190,6 +197,7 @@ export default class App extends Component<Props> {
                   : 'black'
               }}>
               {date.day}
+
             </Text>
             <Text style={{fontSize: 12, marginTop:0, padding: 0, textAlign: 'center', color: '#fff'}}>{marking.text}</Text>
             </View>
@@ -226,22 +234,23 @@ export default class App extends Component<Props> {
           }
         }}/>
 
-        {/* <Modal animationType="fade" transparent={false} visible={this.state.modalVisible}  presentationStyle="fullScreen">
+        <Modal animationType="fade" transparent={false} visible={this.state.modalVisible}  presentationStyle="fullScreen" onRequestClose={() => this.setState({modalVisible: false})}>
         <View style={[styles.modal__bg_nopad]}>
           <View style={styles.modal_header_page}>
               <TouchableOpacity style={ styles.buton_back_header}
-                onPress={() => this.closeModalChotChuyenHang()}>
-                <Ionicons name={Platform.OS === 'ios' ? 'ios-arrow-back' : 'md-arrow-back'} style={styles.icon_back_header}/>
+                onPress={() => this.closeModal()}>
+                <Ionicons name={Platform.OS === 'ios' ? 'ios-close' : 'md-close'} style={styles.icon_back_header}/>
               </TouchableOpacity>
-              <Text style={[styles.modal_header_tilte]}>Thông tin chốt chuyến hàng</Text>
+              <Text style={[styles.modal_header_tilte]}>Modal</Text>
           </View>
           <ScrollView>
-
+            <View style={{padding: 10}}>
+              <Text>{this.state.day}{'\n'}{'\n'}
+              {this.state.text}</Text>
+            </View>
           </ScrollView>
-
-
         </View>
-      </Modal> */}
+      </Modal>
     </View>);
   }
 }

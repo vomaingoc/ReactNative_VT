@@ -13,6 +13,7 @@ import styles     from "./src/styles/styles.js";
 import DrawerScreen   from "./src/screens/DrawerScreen.js";
 import TabScreen   from "./src/screens/TabScreen.js";
 import Calendar   from "./src/screens/Calendar.js";
+import Chart   from "./src/screens/Chart.js";
 import Test   from "./src/screens/Test.js";
 
 const MenuRightStack = StackNavigator(
@@ -30,17 +31,17 @@ const MenuRightStack = StackNavigator(
       headerBackTitle: null,
       headerLeft: null,
       headerStyle: {
-      //  backgroundColor: variables.color.darkblue,
+       backgroundColor: variables.color.darkblue,
         //alignItems: "center",
         textAlign: 'center'
       },
-      //headerTintColor: variables.color.headerTitle,
+      headerTintColor: variables.color.headerTitle,
       headerTitleStyle: {
         flex: 1,
         fontWeight: "bold",
         textAlign: "center",
         alignItems: "center",
-      //  fontSize: variables.fontSize.headerTitle
+       fontSize: variables.fontSize.headerTitle
       }
     }
   }
@@ -55,24 +56,22 @@ export const RootTab = TabNavigator(
         tabBarLabel: "Calendar",
       }
     },
-    // ChuyenHang: {
-    //   screen: ChuyenHang,
-    //   navigationOptions: {
-    //     title: "Danh sách chuyến hàng",
-    //   }
-    // },
-
-
+    Chart: {
+      screen: Chart,
+      navigationOptions: {
+        title: "Chart",
+      }
+    },
   },
   {
     navigationOptions: {
-    //activeTintColor: variables.color.tabNavActive,
+    activeTintColor: variables.color.tabNavActive,
      headerBackImage: null,
      headerBackTitle: null,
      headerLeft: null,
       headerTitleStyle: {
-      //  color: variables.color.headerTitle,
-        //fontSize: variables.fontSize.headerTitle,
+       color: variables.color.headerTitle,
+        fontSize: variables.fontSize.headerTitle,
         textAlign: "center",
         alignSelf: "stretch",
         // flex: 1,
@@ -127,18 +126,18 @@ export const IntroStack = StackNavigator({
   navigationOptions: {
     headerBackTitle: null,
     headerStyle: {
-      //backgroundColor: variables.color.darkblue,
+      backgroundColor: variables.color.darkblue,
       // flexDirection: "row",
       // alignItems: "center",
       paddingLeft: 0,
       marginLeft: 0
     },
-    //headerTintColor: variables.color.headerTitle,
+    headerTintColor: variables.color.headerTitle,
     headerTitleStyle: {
       fontWeight: "bold",
       textAlign: "center",
       // alignItems: "center",
-      //fontSize: variables.fontSize.headerTitle,
+      fontSize: variables.fontSize.headerTitle,
       paddingLeft: 0,
       marginLeft: 0
     }
@@ -167,18 +166,18 @@ export const LoginStack = StackNavigator({
   navigationOptions: {
     headerBackTitle: null,
     headerStyle: {
-    //  backgroundColor: variables.color.darkblue,
+     backgroundColor: variables.color.darkblue,
       // flexDirection: "row",
       // alignItems: "center",
       paddingLeft: 0,
       marginLeft: 0
     },
-    //headerTintColor: variables.color.headerTitle,
+    headerTintColor: variables.color.headerTitle,
     headerTitleStyle: {
       fontWeight: "bold",
       textAlign: "center",
       alignItems: "center",
-      //fontSize: variables.fontSize.headerTitle,
+      fontSize: variables.fontSize.headerTitle,
       paddingLeft: 0,
       marginLeft: 0
     }
@@ -209,7 +208,7 @@ export const RootStack = StackNavigator(
         position: 'absolute'
       },
       headerStyle: {
-      //  backgroundColor: variables.color.darkblue,
+       backgroundColor: variables.color.darkblue,
         // flexDirection: "row",
         // alignItems: "center",
         paddingLeft: 0,
@@ -217,14 +216,14 @@ export const RootStack = StackNavigator(
         //flex:1,
       //  width: win.width,
       },
-    //  headerTintColor: variables.color.headerTitle,
+     headerTintColor: variables.color.headerTitle,
       headerTitleStyle: {
-      //  width: win.width,
+       width: win.width,
         flex:1,
         fontWeight: "bold",
         textAlign: "center",
         alignItems: "center",
-      //  fontSize: variables.fontSize.headerTitle,
+       fontSize: variables.fontSize.headerTitle,
         paddingLeft: 0,
         marginLeft: 0,
       }
