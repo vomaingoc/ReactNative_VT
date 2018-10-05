@@ -11,6 +11,7 @@ import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage; //add this
 import java.util.Arrays;
 import java.util.List;
+import com.horcrux.svg.SvgPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -23,8 +24,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(), 
+          new MainReactPackage(),
           new VectorIconsPackage(),
+          new SvgPackage(),
             new FingerprintAuthPackage()
       );
     }

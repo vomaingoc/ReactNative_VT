@@ -183,7 +183,10 @@ export default class App extends Component<Props> {
         markingType={'period'}
 
         dayComponent={({date, state, marking}) => {
-          return (<TouchableOpacity onPress={()=> Alert.alert('Ngày bạn chọn', JSON.stringify(date))} style={{
+          return (<TouchableOpacity onPress={()=>
+            Alert.alert('Ngày bạn chọn', JSON.stringify(date))}
+
+            style={{
               flex: 1,
               padding:1,
               margin: 0,
